@@ -43,6 +43,7 @@ namespace RusticiSoftware.HostedEngine.Client
         private string appId;
         private string courseAppId;
         private string courseId;
+        private int registrationCount;
         private bool enabled;
         private string tags;
         private string notes;
@@ -62,6 +63,7 @@ namespace RusticiSoftware.HostedEngine.Client
             this.appId = dispatchDataElement["appId"].InnerText;
             this.courseAppId = dispatchDataElement["courseAppId"].InnerText;
             this.courseId = dispatchDataElement["courseId"].InnerText;
+            this.registrationCount = Int32.Parse( dispatchDataElement["registrationcount"].InnerText );
             this.enabled = bool.Parse(dispatchDataElement["enabled"].InnerText);
             if (dispatchDataElement["notes"] != null)
                 this.notes = dispatchDataElement["notes"].InnerText;
@@ -136,6 +138,15 @@ namespace RusticiSoftware.HostedEngine.Client
         {
             get { return courseId; }
         }
+        
+        /// <summary>
+        /// the number of registrations created through this dispatch
+        /// </summary>
+        public int RegistrationCount
+        {
+		    get { return registrationCount; }
+	    }
+        
 
         /// <summary>
         /// true if this dispatch is enabled; otherwise, false.
